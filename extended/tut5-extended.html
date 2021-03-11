@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tutorial 5</title>
+    <title>Tutorial 5 - Extended</title>
     <style>
         body{
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
-        p span, div span{
+        .draw span, #user span{
             display: inline-block;
             background-color: aliceblue;
             border: 2px solid black;
@@ -21,11 +21,26 @@
             margin: auto;
             background-color: aliceblue;
             width: max-content;
-            padding: 10px;
+            padding: 2vw;
         }
         #lotteryForm input, button{
             width: 70px;
             box-sizing: border-box;
+            border: none;
+            border-radius: 30px;
+            padding: 1vw;
+            text-align: center;
+        }
+        #lotteryForm input:hover{
+            background-color: rgb(248, 248, 191);
+        }
+        #lotteryForm button:hover{
+            background-color: #000;
+            color: #eee;
+        }
+        #lotteryForm input:focus{
+            outline: none;
+            background-color: beige;
         }
         button{
             width: 219px;
@@ -35,12 +50,28 @@
             color: maroon;
         }
         .highlightBonus{
-            color: white;
-            background-color: rgb(0, 0, 155);
+            color: rgb(0, 0, 199);
+            border: solid 3px #cccccc;
         }
         .highlightBonusWin{
             background-color: navy;
             color: gold;
+        }
+
+        #lotteryContainer{
+            display: none;
+            width: max-content;
+            padding: 5vw;
+            margin: auto;
+        }
+        #lotteryForm button:focus{
+            animation: lotteryButtonsAnimation 0.5s ease 0s 1 both;
+            outline: none;
+        }
+
+        @keyframes lotteryButtonsAnimation{
+            from{background-color: #000;}
+            to{background-color: #cccccc;}
         }
     </style>
 </head>
@@ -51,34 +82,36 @@
     <p id="errorMessage" style="color: red;"></p>
 
     <div id="lotteryForm">
-        <form action="" method="POST">
-            <input type="text" name="num1" id="num1" placeholder="Number 1">
-            <input type="text" name="num2" id="num2" placeholder="Number 2">
-            <input type="text" name="num3" id="num3" placeholder="Number 3">
-            <input type="text" name="num4" id="num4" placeholder="Number 4">
-            <input type="text" name="num5" id="num5" placeholder="Number 5">
-            <input type="text" name="num6" id="num6" placeholder="Number 6">
+        <!-- <form action="" method="POST"> -->
+            <input type="text" name="num1" id="num1">
+            <input type="text" name="num2" id="num2">
+            <input type="text" name="num3" id="num3">
+            <input type="text" name="num4" id="num4">
+            <input type="text" name="num5" id="num5">
+            <input type="text" name="num6" id="num6">
             <br><br>
             <button name="validate" value="validate" id="validateBtn">Check Numbers</button>
-            <button name="draw" value="validate">Test your luck!</button>
-        </form>
+            <button name="draw" value="validate" disabled id="drawLottery">Test your luck!</button>
+        <!-- </form> -->
         
     </div>
 
-    <div id="lotteryCotainer">
+    <div id="lotteryContainer">
         <p>
             Your Lottery Numbers:
-            <span id="usernum1">21</span>
-            <span id="usernum2">34</span>
-            <span id="usernum3">52</span>
-            <span id="usernum4">56</span>
-            <span id="usernum5">13</span>
-            <span id="usernum6">05</span>
+            <div id="user">
+                <span id="usernum1">21</span>
+                <span id="usernum2">34</span>
+                <span id="usernum3">52</span>
+                <span id="usernum4">56</span>
+                <span id="usernum5">13</span>
+                <span id="usernum6">05</span>
+            </div>
         </p>
         <br>
-        <p style="display: inline-block;">
+        <p>
             Draw Numbers:
-            <div id="draw">
+            <div id="draw" class="draw">
                 <span id="drawnum1">21</span>
                 <span id="drawnum2">34</span>
                 <span id="drawnum3">52</span>
@@ -88,16 +121,30 @@
                 <span id="drawnum7" class="highlightBonus">05</span>
             </div>
         </p>
-    
-        <hr>
-    
-        <p>
-            <address>osura.20201222@iit.ac.lk</address>
-            <br>
-            Last Modified date: 6/3/2021
-        </p>
     </div>
+
+    <hr>
+    <div>
+        <h3>How Does this Work</h3>
+        <br>
+        <p>Enter your Lucky 6 numbers, if more than 1 of the numbers match the numbers generated you win a price. Of course the price increases with the number of matches.</p>
+        <span><b>
+            Number Criteria to match: <br>
+            <ul>
+                <li>Numbers entered must be within 1-60</li>
+                <li>All 6 numbers entered must be unique from each other</li>
+            </ul>
+            <br>
+
+            P.S - No use of trying to cheat, looser is a looser no matter what you try!
+        </b></span>
+    </div>
+    <p>
+        <address>osura.20201222@iit.ac.lk</address>
+        <br>
+        Last Modified: <span><script>document.write(document.lastModified)</script></span>
+    </p>
     
-    <script src="tut5.js"></script>
+    <script src="tut5-extended.js"></script>
 </body>
 </html>
